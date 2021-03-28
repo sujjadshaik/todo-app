@@ -19,8 +19,9 @@ services:
     MYSQL_DATABASE: root
     MYSQL_ROOT_PASSWORD: 143625
     MYSQL_ROOT_HOST: '%'
+
    ports:
-   - "3307:3306"
+   - "3306:3306"
    restart: always
   
   app:
@@ -32,6 +33,8 @@ services:
       - ~/.m2:/root/.m2
     expose:
       - "8080"
+    environment:
+      MYSQL_DB_HOST: mysql:3306
     command: mvn clean spring-boot:run
     depends_on:
       # - nginx
