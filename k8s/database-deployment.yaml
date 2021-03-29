@@ -39,12 +39,12 @@ spec:
         - image: sujjad/todo-mysql:v23
           name: mysql
           env:
-            - name: POSTGRES_USER
+            - name: MYSQL_DATABASE
               valueFrom:
                 configMapKeyRef:
                   name: mysql-config
                   key: postgres_user
-            - name: POSTGRES_PASSWORD
+            - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 configMapKeyRef:
                   name: mysql-config
