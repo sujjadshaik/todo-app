@@ -11,11 +11,19 @@ pipeline{
             }
                 
         }
-        stage('Maven compile'){
+        stage('Maven package'){
             steps{
-                sh 'mvn compile'
+                sh 'mvn -f app/pom.xml package -Dmaven.test.skip=true'
 
             }
+        }
+        stage('sonar analysis'){
+            steps{
+                withSonarQubeEnv('sonarQube'){
+                    sh 'mvn -f app/pom.xml sonar:sonar'
+                }
+            }
+
         }
     }
 }
