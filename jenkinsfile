@@ -23,7 +23,22 @@ pipeline{
                     sh 'mvn -f app/pom.xml sonar:sonar'
                 }
             }
+        }
+        stage('deploy to artifactor'){
+            steps{
+                rtUpload (
+            serverId: 'ARTIFACTORY-SERVER',
+            spec: '''{
+                 "files": [
+                             {
+                                "pattern": "target/*.jar",
+                                "target": "art-doc-dev-loc/todo-app/"
+                            }
+                        ]
+            }''',
+            )
 
+            }
         }
     }
 }
