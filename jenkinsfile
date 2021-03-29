@@ -43,7 +43,7 @@ pipeline{
          stage('Location'){
             steps{
                 //sh 'cd artifacts'
-                sh 'ls artifacts'
+                sh 'ls artifacts/todo-app'
             }
         }
         stage('download artifact'){
