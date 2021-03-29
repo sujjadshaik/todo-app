@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app-ui
-          image: sujjad/todo-nginx:v23
+          image: sujjad/todo-nginx
           imagePullPolicy: Always
           ports:
             - containerPort: 80
