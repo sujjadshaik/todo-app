@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Maven package'){
             steps{
-                sh 'mvn -f app/pom.xml package -Dmaven.test.skip=true'
+                sh 'mvn -f app/pom.xml package'
 
             }
         }
