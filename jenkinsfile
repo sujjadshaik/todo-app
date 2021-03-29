@@ -56,6 +56,12 @@ pipeline{
             
             }
         }
+
+        stage('Location'){
+            steps{
+                sh 'ls'
+            }
+        }
         stage('Docker build'){
             steps{
                 sh 'docker-compose up'
