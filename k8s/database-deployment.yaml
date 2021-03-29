@@ -37,17 +37,17 @@ spec:
             claimName: mysql-pvk-claim
       containers:
         - image: sujjad/todo-mysql:v23
-          name: postgres
+          name: mysql
           env:
             - name: POSTGRES_USER
               valueFrom:
                 configMapKeyRef:
-                  name: postgres-config
+                  name: mysql-config
                   key: postgres_user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 configMapKeyRef:
-                  name: postgres-config
+                  name: mysql-config
                   key: postgres_password
           ports:
             - containerPort: 3600
