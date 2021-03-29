@@ -53,8 +53,8 @@ pipeline{
                 spec:"""{
                      "files": [
                                 {
-                                    "pattern": "art-doc-dev-loc/todo-app/",
-                                    "target": "todo-app/artifacts"      
+                                    "pattern": "art-doc-dev-loc/todo-app/**",
+                                    "target": "artifacts/"      
                                 }
                             ]
               }"""
@@ -66,9 +66,9 @@ pipeline{
         
         stage('Docker build'){
             steps{
-                dir("var/lib/jenkins/workspace/test/todo-app/todo-app/artifacts"){
+                // dir("var/lib/jenkins/workspace/test/todo-app/todo-app/artifacts"){
                     sh 'docker-compose up'
-                }
+                // }
                 
             }
         }

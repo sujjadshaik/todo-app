@@ -36,8 +36,8 @@ services:
     environment:
       MYSQL_DB_HOST: mysql:3306
     # command: mvn clean spring-boot:run
-    command: java -jar TodoDemo-0.0.1-SNAPSHOT.war
+    command: java -jar /var/lib/jenkins/workspace/test/artifacts/todo-app/*.war
     depends_on:
       # - nginx
       - mysql
-# "/var/lib/jenkins/workspace/test/artifacts/todo-app
+# "/var/lib/jenkins/workspace/test/artifacts/todo-app/*.war
