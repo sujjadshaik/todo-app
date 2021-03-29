@@ -40,5 +40,22 @@ pipeline{
 
             }
         }
+        stage('download artifact'){
+            steps{
+                 rtDownload (
+                 serverId: "ARTIFACTORY-SERVER",
+                spec:"""{
+                     "files": [
+                                {
+                                    "pattern": "art-doc-dev-loc/todo-app/**",
+                                    "target": "artifacts/"      
+                                }
+                            ]
+              }"""
+            )
+            
+            }
+        }
+
     }
 }
