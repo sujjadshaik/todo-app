@@ -40,12 +40,12 @@ pipeline{
 
             }
         }
-         stage('Location'){
-            steps{
-                //sh 'cd artifacts'
-                //sh 'ls ~/var/lib/jenkins/workspace/test/todo-app/todo-app/artifacts'
-            }
-        }
+        //  stage('Location'){
+        //     steps{
+        //         //sh 'cd artifacts'
+        //         //sh 'ls ~/var/lib/jenkins/workspace/test/todo-app/todo-app/artifacts'
+        //     }
+        // }
         stage('download artifact'){
             steps{
                  rtDownload (
