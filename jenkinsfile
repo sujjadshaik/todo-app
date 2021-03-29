@@ -40,6 +40,11 @@ pipeline{
 
             }
         }
+         stage('Location'){
+            steps{
+                sh 'ls'
+            }
+        }
         stage('download artifact'){
             steps{
                  rtDownload (
@@ -57,11 +62,7 @@ pipeline{
             }
         }
 
-        stage('Location'){
-            steps{
-                sh 'ls'
-            }
-        }
+        
         stage('Docker build'){
             steps{
                 sh 'docker-compose up'
