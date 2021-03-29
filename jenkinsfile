@@ -42,6 +42,7 @@ pipeline{
         }
          stage('Location'){
             steps{
+                sh 'cd artifacts'
                 sh 'ls'
             }
         }
@@ -53,7 +54,7 @@ pipeline{
                      "files": [
                                 {
                                     "pattern": "art-doc-dev-loc/todo-app/",
-                                    "target": "~/app/todo-app/artifacts"      
+                                    "target": "todo-app/artifacts"      
                                 }
                             ]
               }"""
