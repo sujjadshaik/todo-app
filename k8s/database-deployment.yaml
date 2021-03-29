@@ -5,7 +5,7 @@ metadata:
   namespace: default
 data:
   postgres_user: root
-  postgres_password: 143625
+  postgres_password: "143625"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
