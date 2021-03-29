@@ -43,7 +43,7 @@ pipeline{
          stage('Location'){
             steps{
                 //sh 'cd artifacts'
-                sh 'ls artifacts/todo-app'
+                sh 'ls ~/var/lib/jenkins/workspace/test/todo-app/todo-app/artifacts'
             }
         }
         stage('download artifact'){
