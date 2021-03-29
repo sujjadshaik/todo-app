@@ -47,8 +47,8 @@ pipeline{
                 spec:"""{
                      "files": [
                                 {
-                                    "pattern": "art-doc-dev-loc/todo-app/**",
-                                    "target": "~/app"      
+                                    "pattern": "art-doc-dev-loc/todo-app/",
+                                    "target": "~/app/todo-app/artifacts"      
                                 }
                             ]
               }"""
