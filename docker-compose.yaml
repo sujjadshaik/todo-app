@@ -31,6 +31,7 @@ services:
     volumes:
       - ./app:/app
       - ~/.m2:/root/.m2
+      - ./artifacts:/artifacts
     expose:
       - "8080"
     environment:
