@@ -43,7 +43,7 @@ pipeline{
          stage('Location'){
             steps{
                 //sh 'cd artifacts'
-                sh 'ls'
+                sh 'ls artifacts'
             }
         }
         stage('download artifact'){
