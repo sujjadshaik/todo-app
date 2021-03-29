@@ -42,7 +42,7 @@ pipeline{
         }
          stage('Location'){
             steps{
-                sh 'cd artifacts'
+                //sh 'cd artifacts'
                 sh 'ls'
             }
         }
