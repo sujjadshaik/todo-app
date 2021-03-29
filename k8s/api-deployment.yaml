@@ -17,7 +17,7 @@ spec:
       containers:
       - name: spring-boot
         env:
-          - name: DB_SERVER
+          - name: MYSQL_DB_HOST
             value: mysql:3306
         image: sujjad/todo-app:v23
 ---
@@ -26,7 +26,7 @@ kind: Service
 metadata:
   name: spring-boot
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: 8080
   selector:
