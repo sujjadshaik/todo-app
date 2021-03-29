@@ -67,7 +67,7 @@ pipeline{
         stage('Docker build'){
             steps{
                 // dir("var/lib/jenkins/workspace/test/todo-app/todo-app/artifacts"){
-                    sh 'docker-compose up'
+                    sh 'docker-compose build'
                 // }
                 
             }
