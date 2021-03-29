@@ -1,0 +1,21 @@
+pipeline{
+    agent any;
+     tools{
+       maven 'maven'
+       jdk 'JDK11'
+   }
+    stages{
+        stage('Fetch project from github'){
+            steps{
+                git branch: 'master', url: 'https://github.com/sujjadshaik/todo-app.git'
+            }
+                
+        }
+        stage('Maven compile'){
+            steps{
+                sh 'mvn compile'
+
+            }
+        }
+    }
+}
