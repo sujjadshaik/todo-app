@@ -50,8 +50,8 @@ spec:
                   name: mysql-config
                   key: postgres_password
           ports:
-            - containerPort: 3600
-              name: postgres
+            - containerPort: 3306
+              name: mysql
 ---
 apiVersion: v1
 kind: Service
@@ -60,6 +60,6 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 3600
+    - port: 3306
   selector:
     app: mysql

@@ -18,7 +18,7 @@ spec:
       - name: spring-boot
         env:
           - name: DB_SERVER
-            value: mysql:3600
+            value: mysql:3306
         image: sujjad/todo-app:v23
 ---
 apiVersion: v1
