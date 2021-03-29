@@ -31,7 +31,7 @@ pipeline{
             spec: '''{
                  "files": [
                              {
-                                "pattern": "target/*.jar",
+                                "pattern": "app/target/*.jar",
                                 "target": "art-doc-dev-loc/todo-app/"
                             }
                         ]
