@@ -23,6 +23,7 @@
   		<sonar.organization>college-servay</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url> -->
 		
+		<sonar.exclusions>*/model/,/config/,*/ToDoDemo.java</sonar.exclusions>
 		<sonar.projectKey>TODO-App-List</sonar.projectKey>
  		 <sonar.organization>linubajy</sonar.organization>
  		 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
