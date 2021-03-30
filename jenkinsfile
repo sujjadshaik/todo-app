@@ -5,19 +5,45 @@ pipeline{
        jdk 'JDK'
    }
     stages{
-        stage('Fetch project from github'){
-            steps{
-                git branch: 'master', url: 'https://github.com/linubajy/todo-app.git'
-            }
-                
-        }
         
-        stage('Maven package'){
+        stage("build"){
             steps{
-                bat 'mvn -f app/pom.xml package'
-
+                bat 'mvn clean'
+                bat 'mvn -f app/pom.xml compile'
+            }
+            post{
+                success{
+                    echo "========Maven compile stage executed successfully========"
+                }
+                failure{
+                    echo "========Maven compile stage execution failed========"
+                }
             }
         }
+    
+     stage("Test"){
+            steps{
+                echo "Maven Test"
+                bat 'mvn -f app/pom.xml -Dmaven.test.failure.ignore=true  test'
+            }
+            post{
+                success{
+                    junit 'app/target/surefire-reports/*.xml'
+                    echo "========Maven Test stage executed successfully========"
+
+                }
+                failure{
+                    echo "========Maven Test stage execution failed========"
+                }
+            }
+        }
+        stage("Packaging"){
+            steps{
+                echo "Maven Packaging"
+                bat 'mvn -f app/pom.xml -Dmaven.test.failure.ignore=true package'
+            }
+       
+        
         
         stage('sonar analysis'){
             agent any
