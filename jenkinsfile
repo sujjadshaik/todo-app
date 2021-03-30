@@ -74,6 +74,8 @@ pipeline{
         }
         stage('Pushing images to docker hub'){
             steps{
+                sh 'docker image prune -a
+                
                 withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPWD')]) {
                             // some block
                    sh "docker login -u sujjad -p ${dockerHubPWD}"
