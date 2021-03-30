@@ -60,7 +60,7 @@ pipeline{
       
          
     failure {  
-             echo 'Mail being sent'
+             echo 'SonarQube Analysis Failed'
              mail bcc: '', body: "<b>Analysis Complete</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} ", cc: 'devteam@mindtree.com', charset: 'UTF-8', from: 'blinu.1997@gmail.com', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "blinu.1997@gmail.com";  
          }  
           
