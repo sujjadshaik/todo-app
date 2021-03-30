@@ -3,7 +3,7 @@ pipeline{
      tools{
        maven 'maven'
        jdk 'JDK'
-   }
+        }
     stages{
         
         stage('Fetch project from github'){
@@ -59,6 +59,17 @@ pipeline{
                     bat 'mvn -f app/pom.xml package sonar:sonar'
                 }
             }
+            post{
+                success{
+                    junit 'app/target/surefire-reports/*.xml'
+                    echo "========Code Analysis stage executed successfully========"
+
+                }
+                failure{
+                    echo "========Code Analysis stage execution failed========"
+                }
+            }
+            
         }
         
          stage("Quality Gate") {
@@ -74,10 +85,10 @@ pipeline{
                          }
                     }
               }
+             
             }
             
             post {  
-     
             success {
                 echo ' SonarQube Analysis complete'
                 mail bcc: '', body: "<b>Analysis complete</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} ", cc: 'devteam@mindtree.com', charset: 'UTF-8', from: 'blinu.1997@gmail.com', mimeType: 'text/html', replyTo: '', subject: "PIPELINE COMPLETE: Project name -> ${env.JOB_NAME}", to: "blinu.1997@gmail.com";  
@@ -87,6 +98,19 @@ pipeline{
              mail bcc: '', body: "<b>Analysis Complete</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} ", cc: 'devteam@mindtree.com', charset: 'UTF-8', from: 'blinu.1997@gmail.com', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "blinu.1997@gmail.com";  
             }    
           }
+        }  
+        
      }
-     }
+     
+      post{
+       
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    
+     
+     
 }
