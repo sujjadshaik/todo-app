@@ -18,6 +18,7 @@ pipeline{
             }
         }
         stage('sonar analysis'){
+            agent any
             steps{
                 withSonarQubeEnv('sonarCloudID'){
                     echo 'Performing SonarQube Analysis'
