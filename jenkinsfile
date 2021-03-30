@@ -11,12 +11,14 @@ pipeline{
             }
                 
         }
-        stage('Maven package'){
+        
+        stage('Clean'){
             steps{
-                bat 'mvn -f app/pom.xml package'
+                bat 'mvn clean verify'
 
             }
         }
+        
         stage('sonar analysis'){
             agent any
             steps{
