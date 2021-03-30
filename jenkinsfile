@@ -61,7 +61,6 @@ pipeline{
             }
             post{
                 success{
-                    junit 'app/target/surefire-reports/*.xml'
                     echo "========Code Analysis stage executed successfully========"
 
                 }
