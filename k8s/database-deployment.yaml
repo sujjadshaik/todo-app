@@ -52,6 +52,9 @@ spec:
           ports:
             - containerPort: 3306
               name: mysql
+          volumeMounts:
+            - name: mysql-storage  # This name should match the name specified in `volumes.name`
+              mountPath: /var/lib/mysql          
 ---
 apiVersion: v1
 kind: Service
