@@ -6,6 +6,12 @@ pipeline{
    }
     stages{
         
+        stage('Fetch project from github'){
+            steps{
+                git branch: 'master', url: 'https://github.com/linubajy/todo-app.git'
+            }
+                
+        }
         stage("build"){
             steps{
                 bat 'mvn clean'
