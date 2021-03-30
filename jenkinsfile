@@ -12,9 +12,9 @@ pipeline{
                 
         }
         
-        stage('Clean'){
+        stage('Maven package'){
             steps{
-                bat 'mvn clean compile'
+                bat 'mvn -f app/pom.xml package'
 
             }
         }
