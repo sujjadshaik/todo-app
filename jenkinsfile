@@ -79,14 +79,21 @@ pipeline{
                    sh "docker login -u sujjad -p ${dockerHubPWD}"
 
                 }
-                sh "docker commit todo-mysql sujjad/todo-mysql:v${env.BUILD_ID}"
-                sh "docker push sujjad/todo-mysql:v${env.BUILD_ID}"
                 sh "docker commit cisample_app_1 sujjad/todo-app:v${env.BUILD_ID}"
                 sh "docker push sujjad/todo-app:v${env.BUILD_ID}"
 
-
             }
         }
+        stage('deploying it to kubernetes'){
+            steps{
+                sh 'chmod +x change-tag.sh'
+                sh """./change-tag.sh v${env.BUILD_ID}"""
+                sh 'cat k8s/api-deployment.yaml'
+                
+            
+            }
+        }
+    
 
     }
 }
