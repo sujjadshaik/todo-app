@@ -40,12 +40,6 @@ pipeline{
 
             }
         }
-        //  stage('Location'){
-        //     steps{
-        //         //sh 'cd artifacts'
-        //         //sh 'ls ~/var/lib/jenkins/workspace/test/todo-app/todo-app/artifacts'
-        //     }
-        // }
         stage('download artifact'){
             steps{
                  rtDownload (
@@ -66,10 +60,10 @@ pipeline{
         
         stage('Docker build'){
             steps{
-                // dir("var/lib/jenkins/workspace/test/todo-app/todo-app/artifacts"){
+               
                     sh 'docker image prune -a --force'
                     sh 'docker-compose build'
-                // }
+                
                 
             }
         }
