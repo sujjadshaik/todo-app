@@ -89,6 +89,13 @@ pipeline{
 
             }
         }
+        stage("deploying to kubernates"){
+            steps{
+                withCredentials([file(credentialsId: 'kube-config', variable: 'kube-config')]){
+                    sh 'kubectl get svc'
+                }
+            }
+        }
 
     }
 }
