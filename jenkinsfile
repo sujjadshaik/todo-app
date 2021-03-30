@@ -114,7 +114,7 @@ pipeline{
      
      success {
           echo ' SonarQube Analysis complete'
-          mail bcc: '', body: "<b>Analysis complete</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: 'blinu.1997@gmail.com', mimeType: 'text/html', replyTo: '', subject: "PIPELINE COMPLETE: Project name -> ${env.JOB_NAME}", to: "blinu.1997@gmail.com";  
+          mail bcc: '', body: "<b>Analysis complete</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} ", cc: '', charset: 'UTF-8', from: 'blinu.1997@gmail.com',cc: 'devteam@mindtree.com', mimeType: 'text/html', replyTo: '', subject: "PIPELINE COMPLETE: Project name -> ${env.JOB_NAME}", to: "blinu.1997@gmail.com";  
      }
            
               
@@ -123,7 +123,7 @@ pipeline{
          
     failure {  
              echo 'Mail being sent'
-             mail bcc: '', body: "<b>Analysis Complete</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: 'blinu.1997@gmail.com', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "blinu.1997@gmail.com";  
+             mail bcc: '', body: "<b>Analysis Complete</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} ", cc: '', charset: 'UTF-8', from: 'blinu.1997@gmail.com',cc: 'devteam@mindtree.com', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "blinu.1997@gmail.com";  
          }  
           
      } 
