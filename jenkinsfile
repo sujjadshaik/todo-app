@@ -94,7 +94,7 @@ pipeline{
                     sh 'kubectl apply -f k8s/database-deployment.yaml'
                     
                 }
-                sleep(30)
+                sleep(120)
                 withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kube-azure', namespace: '', serverUrl: 'https://content-jackal-k8s-656e8d92.hcp.westus2.azmk8s.io:443') {
                                 // some block
                     sh 'kubectl apply -f k8s/api-deployment.yaml'
