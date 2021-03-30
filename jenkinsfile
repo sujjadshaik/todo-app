@@ -67,6 +67,7 @@ pipeline{
         stage('Docker build'){
             steps{
                 // dir("var/lib/jenkins/workspace/test/todo-app/todo-app/artifacts"){
+                    sh 'docker image prune -a --force'
                     sh 'docker-compose build'
                 // }
                 
@@ -74,7 +75,7 @@ pipeline{
         }
         stage('Pushing images to docker hub'){
             steps{
-                sh 'docker image prune -a --force'
+                
 
                 withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPWD')]) {
                             // some block
