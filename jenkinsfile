@@ -19,11 +19,13 @@ pipeline{
         }
         stage('sonar analysis'){
             steps{
-                withSonarQubeEnv('sonarQube'){
+                withSonarQubeEnv('sonarCloudID'){
+                    echo 'Performing SonarQube Analysis'
                     sh 'mvn -f app/pom.xml sonar:sonar'
                 }
             }
         }
+        /*
         stage('deploy to artifactor'){
             steps{
                 rtUpload (
@@ -87,6 +89,6 @@ pipeline{
 
             }
         }
-
+        */
     }
 }
