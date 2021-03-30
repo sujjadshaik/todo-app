@@ -44,7 +44,7 @@ pipeline{
               }
             }
             }
-            /*
+            
             stage('deploy to artifactor'){
             steps{
                 rtUpload (
@@ -113,7 +113,7 @@ pipeline{
                 }
             }
         }
-        */
+        
     }
     post {  
      
