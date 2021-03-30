@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Maven package'){
             steps{
-                bat 'mvn package'
+                bat 'mvn -f pom.xml package'
 
             }
         }
@@ -22,7 +22,7 @@ pipeline{
             steps{
                 withSonarQubeEnv('sonarCloudID'){
                     echo 'Performing SonarQube Analysis'
-                    bat 'mvn package sonar:sonar'
+                    bat 'mvn -f pom.xml sonar:sonar'
                     //sh 'mvn package sonar:sonar'
                 }
             }
