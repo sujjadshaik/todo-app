@@ -83,8 +83,13 @@ pipeline{
                 sh "docker push sujjad/todo-mysql:v${env.BUILD_ID}"
                 sh "docker commit cisample_app_1 sujjad/todo-app:v${env.BUILD_ID}"
                 sh "docker push sujjad/todo-app:v${env.BUILD_ID}"
-
-
+            }
+        }
+        stage("deploying to kubernates"){
+            steps{
+                withCredentials([file(credentialsId: 'kube-config', variable: 'kube-config')]){
+                    sh 'kubectl get svc'
+                }
             }
         }
     }
