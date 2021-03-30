@@ -79,8 +79,6 @@ pipeline{
                    sh "docker login -u sujjad -p ${dockerHubPWD}"
 
                 }
-                sh "docker commit todo-nginx sujjad/todo-nginx:v${env.BUILD_ID}"
-                sh "docker push sujjad/todo-nginx:v${env.BUILD_ID}"
                 sh "docker commit todo-mysql sujjad/todo-mysql:v${env.BUILD_ID}"
                 sh "docker push sujjad/todo-mysql:v${env.BUILD_ID}"
                 sh "docker commit cisample_app_1 sujjad/todo-app:v${env.BUILD_ID}"

@@ -4,8 +4,8 @@ metadata:
   name: mysql-config
   namespace: default
 data:
-  postgres_user: root
-  postgres_password: "143625"
+  mysql_database: tododb
+  mysql_password: "143625"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -43,15 +43,18 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: mysql-config
-                  key: postgres_user
+                  key: mysql_database
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 configMapKeyRef:
                   name: mysql-config
-                  key: postgres_password
+                  key: mysql_password
           ports:
             - containerPort: 3306
               name: mysql
+          volumeMounts:
+            - name: mysql-storage  # This name should match the name specified in `volumes.name`
+              mountPath: /var/lib/mysql          
 ---
 apiVersion: v1
 kind: Service
