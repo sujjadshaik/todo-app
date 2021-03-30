@@ -56,7 +56,7 @@ pipeline{
             steps{
                 withSonarQubeEnv('sonarCloudID'){
                     echo 'Performing SonarQube Analysis'
-                    bat 'mvn -f app/pom.xml package sonar:sonar'
+                    bat 'mvn -f app/pom.xml sonar:sonar'
                 }
             }
             post{
