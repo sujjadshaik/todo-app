@@ -90,11 +90,13 @@ pipeline{
             post {  
             success {
                 echo ' SonarQube Analysis complete'
+                 mail bcc: '', body: "<b>Analysis complete</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} ", cc: 'devteam@mindtree.com', charset: 'UTF-8', from: 'blinu.1997@gmail.com', mimeType: 'text/html', replyTo: '', subject: "PIPELINE COMPLETE: Project name -> ${env.JOB_NAME}", to: "blinu.1997@gmail.com";  
                 
                  
                 }
             failure {  
              echo 'SonarQube Analysis Failed'
+              mail bcc: '', body: "<b>Analysis complete</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} ", cc: 'devteam@mindtree.com', charset: 'UTF-8', from: 'blinu.1997@gmail.com', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "blinu.1997@gmail.com";  
              
             }    
           }
