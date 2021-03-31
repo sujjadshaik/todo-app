@@ -14,8 +14,8 @@ pipeline{
         }
         stage("build"){
             steps{
-                bat 'mvn clean'
-                bat 'mvn -f app/pom.xml compile'
+                sh 'mvn clean'
+                sh 'mvn -f app/pom.xml compile'
             }
             post{
                 success{
@@ -30,7 +30,7 @@ pipeline{
      stage("Test"){
             steps{
                 echo "Maven Test"
-                bat 'mvn -f app/pom.xml -Dmaven.test.failure.ignore=true  test'
+                sh 'mvn -f app/pom.xml -Dmaven.test.failure.ignore=true  test'
             }
             post{
                 success{
@@ -46,7 +46,7 @@ pipeline{
         stage("Packaging"){
             steps{
                 echo "Maven Packaging"
-                bat 'mvn -f app/pom.xml -Dmaven.test.failure.ignore=true package'
+                sh 'mvn -f app/pom.xml -Dmaven.test.failure.ignore=true package'
             }
        
         }
@@ -56,7 +56,7 @@ pipeline{
             steps{
                 withSonarQubeEnv('sonarCloudID'){
                     echo 'Performing SonarQube Analysis'
-                    bat 'mvn -f app/pom.xml package sonar:sonar'
+                    sh 'mvn -f app/pom.xml package sonar:sonar'
                 }
             }
             post{
