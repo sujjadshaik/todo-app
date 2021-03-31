@@ -1,7 +1,7 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: kanban-autoscale
+  name: spring-autoscale
 spec:
     maxReplicas: 5
     metrics:
