@@ -20,6 +20,9 @@ spec:
           - name: MYSQL_DB_HOST
             value: mysql:3306
         image: sujjad/todo-app:tagVersion
+        resources:
+            requests:
+              cpu: 100m
 ---
 apiVersion: v1
 kind: Service
