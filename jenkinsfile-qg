@@ -2,7 +2,7 @@ pipeline{
     agent any;
      tools{
        maven 'maven'
-       jdk 'JDK11'
+       jdk 'JDK'
         }
     stages{
         
@@ -14,8 +14,8 @@ pipeline{
         }
         stage("build"){
             steps{
-                sh 'mvn clean'
-                sh 'mvn -f app/pom.xml compile'
+                bat 'mvn clean'
+                bat 'mvn -f app/pom.xml compile'
             }
             post{
                 success{
@@ -30,7 +30,7 @@ pipeline{
      stage("Test"){
             steps{
                 echo "Maven Test"
-                sh 'mvn -f app/pom.xml -Dmaven.test.failure.ignore=true  test'
+                bat 'mvn -f app/pom.xml -Dmaven.test.failure.ignore=true  test'
             }
             post{
                 success{
@@ -46,7 +46,7 @@ pipeline{
         stage("Packaging"){
             steps{
                 echo "Maven Packaging"
-                sh 'mvn -f app/pom.xml -Dmaven.test.failure.ignore=true package'
+                bat 'mvn -f app/pom.xml -Dmaven.test.failure.ignore=true package'
             }
        
         }
@@ -56,7 +56,7 @@ pipeline{
             steps{
                 withSonarQubeEnv('sonarCloudID'){
                     echo 'Performing SonarQube Analysis'
-                    sh 'mvn -f app/pom.xml package sonar:sonar'
+                    bat 'mvn -f app/pom.xml package sonar:sonar'
                 }
             }
             post{
