@@ -66,7 +66,7 @@ pipeline{
             steps{
                 
                    bat "docker login -u linubajy -p linubajy1997"
-                   bat "docker tag Demo1_app:latest linubajy/todo-app:v${env.BUILD_ID}"
+                   bat "docker tag practice_app:latest linubajy/todo-app:v${env.BUILD_ID}"
                 bat "docker push linubajy/todo-app:v${env.BUILD_ID}"
 
             }
