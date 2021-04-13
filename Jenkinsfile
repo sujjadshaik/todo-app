@@ -68,9 +68,9 @@ pipeline{
                 withCredentials([string(credentialsId: 'dockerpass', variable: 'dockerPWD')])
                 {
 
-                    bat "docker login -u linubajy -p $(dockerPWD)"}
+                    bat "docker login -u linubajy -p ${dockerPWD}"
+                }
                 bat "docker tag practice_app:latest linubajy/todo-app:latest"
-                
                 bat "docker push linubajy/todo-app:latest"
 
             }
