@@ -84,19 +84,19 @@ pipeline{
                 bat "terraform plan"
                }
             }
-        }
+        }*/
         stage('deploying it to kubernetes'){
             steps{
                 //bat 'chmod +x change-tag.sh'
                 //bat """./change-tag.sh v${env.BUILD_ID}"""
                 //bat 'cat k8s/api-deployment.yaml'
-                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kube-azure', namespace: '', serverUrl: 'https://content-jackal-k8s-656e8d92.hcp.westus2.azmk8s.io:443') {
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kube-azure', namespace: '', serverUrl: 'https://feasible-tick-k8s-2bd096fe.hcp.westus2.azmk8s.io:443') {
                                 // some block
                     bat 'kubectl apply -f k8s/database-deployment.yaml'
                     
                 }
                 sleep(120)
-                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kube-azure', namespace: '', serverUrl: 'https://content-jackal-k8s-656e8d92.hcp.westus2.azmk8s.io:443') {
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kube-azure', namespace: '', serverUrl: 'https://feasible-tick-k8s-2bd096fe.hcp.westus2.azmk8s.io:443') {
                                 // some block
                     bat 'kubectl apply -f k8s/api-deployment.yaml'
                     bat 'kubectl get pods'
