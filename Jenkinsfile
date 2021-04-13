@@ -12,7 +12,7 @@ pipeline{
 
             }
         }
-        stage('sonar analysis'){
+     /*   stage('sonar analysis'){
             steps{
                 withSonarQubeEnv('sonar'){
                     bat 'mvn -f app/pom.xml sonar:sonar'
@@ -52,7 +52,7 @@ pipeline{
             }
         }
 
-        
+        */
         stage('Docker build'){
             steps{
                
@@ -71,6 +71,7 @@ pipeline{
 
             }
         }
+        /*
         stage('creating kubernetes cluster'){
             steps{
                    dir("C:/Users/Welcome/Desktop/New folder/learn-terraform-provision-aks-cluster"){
@@ -101,7 +102,7 @@ pipeline{
 
             }
         }
-    
+    */
 
     }
 }
