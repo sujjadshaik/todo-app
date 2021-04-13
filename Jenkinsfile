@@ -65,8 +65,12 @@ pipeline{
         stage('Pushing images to docker hub'){
             steps{
                 
-                   bat "docker login -u linubajy -p linubajy1997"
-                   bat "docker tag practice_app:latest linubajy/todo-app:v${env.BUILD_ID}"
+                withCredentials([string(credentialsId: 'dockerpass', variable: 'dockerPWD')])
+                {
+
+                    bat "docker login -u linubajy -p $(dockerPWD)"}
+                bat "docker tag practice_app:latest linubajy/todo-app:v${env.BUILD_ID}"
+                
                 bat "docker push linubajy/todo-app:v${env.BUILD_ID}"
 
             }
