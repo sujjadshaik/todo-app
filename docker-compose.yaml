@@ -25,7 +25,7 @@ services:
    restart: always
   
   app:
-    container_name: todo-app
+    image: todo-app
     restart: always
     build: ./app
     ports:
