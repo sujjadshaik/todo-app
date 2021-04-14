@@ -22,7 +22,10 @@
 <!--   		<sonar.projectKey>todo-app</sonar.projectKey>
   		<sonar.organization>college-servay</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url> -->
-		<sonar.projectKey>todo-devops</sonar.projectKey>
+<!-- 		<sonar.projectKey>todo-devops</sonar.projectKey>
+  		<sonar.organization>sujjad</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url> -->
+		<sonar.projectKey>todo-gcp</sonar.projectKey>
   		<sonar.organization>sujjad</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
