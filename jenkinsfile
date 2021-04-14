@@ -76,7 +76,7 @@ pipeline{
                    sh "docker login -u sujjad -p ${dockerHubPWD}"
 
                 }
-                sh "docker commit cisample_app_1 sujjad/todo-app:v${env.BUILD_ID}"
+                sh "docker commit todo-app sujjad/todo-app:v${env.BUILD_ID}"
                 sh "docker push sujjad/todo-app:v${env.BUILD_ID}"
 
             }
@@ -86,13 +86,13 @@ pipeline{
                 sh 'chmod +x change-tag.sh'
                 sh """./change-tag.sh v${env.BUILD_ID}"""
                 sh 'cat k8s/api-deployment.yaml'
-                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kube-azure', namespace: '', serverUrl: 'https://content-jackal-k8s-656e8d92.hcp.westus2.azmk8s.io:443') {
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kube-gcp', namespace: '', serverUrl: 'https://35.222.102.119') {
                                 // some block
                     sh 'kubectl apply -f k8s/database-deployment.yaml'
                     
                 }
                 sleep(120)
-                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kube-azure', namespace: '', serverUrl: 'https://content-jackal-k8s-656e8d92.hcp.westus2.azmk8s.io:443') {
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kube-gcp', namespace: '', serverUrl: 'https://35.222.102.119') {
                                 // some block
                     sh 'kubectl apply -f k8s/api-deployment.yaml'
                     sh 'kubectl get pods'
